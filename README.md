@@ -43,5 +43,5 @@ Root/
 ```
 
 ## Compass?
-1. Resources(.fxml, .png) > `res`, Create a new folder for to segregate types.
-2. Classes > `src/ com.sta`
+1. Resources(.fxml, .png) > `res`, Create a new folder to segregate types.
+2. Classes > `src/ com.sta`, create new package if needed
