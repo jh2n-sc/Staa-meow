@@ -1,4 +1,4 @@
-package item;
+package com.sta.item;
 
 public class Item {
     private String name;
