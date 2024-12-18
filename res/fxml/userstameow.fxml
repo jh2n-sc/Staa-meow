@@ -23,26 +23,26 @@
                      <children>
                         <TableView prefHeight="466.0" prefWidth="780.0">
                            <columns>
-                              <TableColumn prefWidth="140.00002479553223" text="Category" />
-                              <TableColumn prefWidth="465.6000061035156" text="Description" />
-                              <TableColumn prefWidth="112.00006103515625" text="Item ID" />
-                              <TableColumn prefWidth="61.5999755859375" text="Stock" />
+                              <TableColumn fx:id="categoryColumn" prefWidth="140.00002479553223" text="Category" />
+                              <TableColumn fx:id="descriptionColumn" prefWidth="465.6000061035156" text="Description" />
+                              <TableColumn fx:id="itemIDColumn" prefWidth="112.00006103515625" text="Item ID" />
+                              <TableColumn fx:id="stockColumn" prefWidth="61.5999755859375" text="Stock" />
                            </columns>
                         </TableView>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Paper">
+          <Tab fx:id="paperCategoryCol" text="Paper">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TableView prefHeight="466.0" prefWidth="780.0">
                            <columns>
                               <TableColumn prefWidth="140.00002479553223" text="Category" />
-                              <TableColumn prefWidth="465.6000061035156" text="Description" />
-                              <TableColumn prefWidth="112.00006103515625" text="Item ID" />
-                              <TableColumn prefWidth="61.5999755859375" text="Stock" />
+                              <TableColumn fx:id="paperDescriptionCol" prefWidth="465.6000061035156" text="Description" />
+                              <TableColumn fx:id="paperItemIDCol" prefWidth="112.00006103515625" text="Item ID" />
+                              <TableColumn fx:id="paperStockCol" prefWidth="61.5999755859375" text="Stock" />
                            </columns>
                         </TableView>
                      </children>
@@ -55,7 +55,7 @@
                      <children>
                         <TableView prefHeight="466.0" prefWidth="780.0">
                            <columns>
-                              <TableColumn prefWidth="140.00002479553223" text="Category" />
+                              <TableColumn fx:id="writingCategoryCol" prefWidth="140.00002479553223" text="Category" />
                               <TableColumn prefWidth="465.6000061035156" text="Description" />
                               <TableColumn prefWidth="112.00006103515625" text="Item ID" />
                               <TableColumn prefWidth="61.5999755859375" text="Stock" />
