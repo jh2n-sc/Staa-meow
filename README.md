@@ -6,39 +6,36 @@
 
 ## Project Structure
 ```
-Root/
-│   pom.xml
-│   README.md
-│   
-├───.idea/
-│       .gitignore
-│       compiler.xml
-│       jarRepositories.xml
-│       misc.xml
-│       modules.xml
-│       Staa-meow.iml
-│       vcs.xml
-│       workspace.xml
-│
-├───res/
-├───src/
-│   │   module-info.java
-│   │
-│   └───com/
-│       └───sta/
-│           │   Main.java
-│           │
-│           └───main/
-└───target/
-    ├───classes/
-    │   │   module-info.class
-    │   │
-    │   └───com/
-    │       └───sta/
-    │               Main.class
-    │
-    └───generated-sources/
-        └───annotations
+PROJECT_ROOT/
+|   README.md
+|
++---.github
+|   \---workflows
+|           maven.yml
+|
++---res
+|   +---credentials
+|   |       IMPORTANT.json
+|   |
+|   \---fxml
+|           adminstameow.fxml
+|           main.fxml
+|           userstameow.fxml
+|
+\---src
+    \---com
+        \---sta
+            |   AdminStaMeowController.java
+            |   LogInController.java
+            |   Main.java
+            |   UserStaMeowController.java
+            |
+            +---item
+            |       Item.java
+            |
+            \---utilities
+                    Utilities.java
+
 
 ```
 
