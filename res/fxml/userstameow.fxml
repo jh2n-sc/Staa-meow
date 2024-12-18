@@ -110,7 +110,7 @@
                </HBox.margin>
             </TextField>
             <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Search" />
-            <Text fx:id="username" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="username" textAlignment="RIGHT" wrappingWidth="492.5369183421135">
+            <Text fx:id="username" strokeType="OUTSIDE" strokeWidth="0.0" text="username" textAlignment="RIGHT" wrappingWidth="492.5369183421135">
                <HBox.margin>
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </HBox.margin>
