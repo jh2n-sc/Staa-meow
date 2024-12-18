@@ -21,7 +21,7 @@ public class Main extends Application{
 
         Scene scene = new Scene(root, 400 , 382);
         assert stage != null : "primaryStage must not be null";
-        stage.setTitle("FXML Welcome");
+        stage.setTitle("StaMeow Log In");
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
