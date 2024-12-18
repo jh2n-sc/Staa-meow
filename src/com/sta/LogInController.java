@@ -32,8 +32,8 @@ public class LogInController {
         boolean notLogin = false;
 
 
-        passwordField.setStyle("-fx-border-color: default; -fx-prompt-text-fill: default;");
-        usernameField.setStyle("-fx-border-color: default; -fx-prompt-text-fill: default;");
+        passwordField.setStyle("");
+        usernameField.setStyle("");
         //jn: reset node styles for every clicks
         //log in flag for empty username field
         //maybe i could make the error msg more apparent pero this will do for now
