@@ -6,6 +6,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+import Utility.Util;
+
 public class SignInController {
 
     @FXML
@@ -21,8 +23,8 @@ public class SignInController {
     private PasswordField passwordField;
 
     @FXML
-    void haveAnAccountClicked(MouseEvent event) {
-
+    void haveAnAccountClicked(MouseEvent event) { //user already has an account
+        Util.switchScene("/fxml/main.fxml", "StaMeow Log In", event);
     }
 
     @FXML
