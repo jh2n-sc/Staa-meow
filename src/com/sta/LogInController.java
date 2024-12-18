@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.Parent;
 
 import java.io.IOException;
-
+import com.sta.utilities.Utilities;
 public class LogInController {
 
     @FXML
@@ -32,6 +32,9 @@ public class LogInController {
         boolean notLogin = false;
 
 
+        passwordField.setStyle("-fx-border-color: default; -fx-prompt-text-fill: default;");
+        usernameField.setStyle("-fx-border-color: default; -fx-prompt-text-fill: default;");
+        //jn: reset node styles for every clicks
         //log in flag for empty username field
         //maybe i could make the error msg more apparent pero this will do for now
 
@@ -59,31 +62,19 @@ public class LogInController {
         //(currently non-existent) database.
 
         if(name.equals("admin") && password.equals("adminpassword1234")) {
-            switchScene("/fxml/adminstameow.fxml", "StaMeow Admin", event);
+            Utilities.switchScene("/fxml/adminstameow.fxml", "StaMeow Admin", event);
         } else {
-            switchScene("/fxml/userstameow.fxml", "StaMeow User", event);
+            Utilities.switchScene("/fxml/userstameow.fxml", "StaMeow User", event);
         }
 
 
         System.out.println("username: " + name + " password: " + password);
     }
 
+    //jn: done/relocated to com.sta.utilities.utilites
     //util function to switch scenes
     //pwede siguro 'to ilagay in a separate utility package para magamit throughout the program
-    private void switchScene(String fxmlPath, String title, ActionEvent event) {
-        try {
-            // Load the specified scene
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-            Parent root = loader.load();
 
-            // Get the current stage and set the new scene
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle(title);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
 }
 
