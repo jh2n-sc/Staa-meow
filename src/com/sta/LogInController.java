@@ -69,9 +69,10 @@ public class LogInController {
         System.out.println("username: " + name + " password: " + password);
     }
 
-    //util function to switch scenes
-    //pwede siguro 'to ilagay in a separate utility package para magamit throughout the program
+    @FXML
+    void createAccountClicked(MouseEvent event) {
 
+    }
 
 }
 
