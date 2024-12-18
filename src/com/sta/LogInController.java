@@ -23,6 +23,9 @@ public class LogInController {
         String password = passwordField.getText().trim();
         boolean notLogin = false;
 
+        //jn: fixed the style bug
+        usernameField.setStyle("");
+        passwordField.setStyle("");
 
         //log in flag for empty username field
         //maybe i could make the error msg more apparent pero this will do for now
