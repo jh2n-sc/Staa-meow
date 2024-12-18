@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import Utility.Util;
+import com.sta.utility.Utility;
 
 public class LogInController {
 
@@ -51,9 +51,9 @@ public class LogInController {
         //(currently non-existent) database.
 
         if(name.equals("admin") && password.equals("adminpassword1234")) {
-            Util.switchScene("/fxml/adminstameow.fxml", "StaMeow Admin", event);
+            Utility.switchScene("/fxml/adminstameow.fxml", "StaMeow Admin", event);
         } else {
-            Util.switchScene("/fxml/userstameow.fxml", "StaMeow User", event);
+            Utility.switchScene("/fxml/userstameow.fxml", "StaMeow User", event);
         }
 
 
@@ -62,7 +62,7 @@ public class LogInController {
 
     @FXML
     void createAccountClicked(MouseEvent event) {
-        Util.switchScene("/fxml/signin.fxml", "StaMeow Sign In", event);
+        Utility.switchScene("/fxml/signin.fxml", "StaMeow Sign In", event);
     }
 
 }
