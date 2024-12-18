@@ -34,7 +34,19 @@
                 <PasswordField fx:id="passwordField" prefHeight="25.0" prefWidth="278.0" promptText="Password" />
             <PasswordField fx:id="confirmPasswordField" prefHeight="25.0" prefWidth="278.0" promptText="Confirm Password" />
                   <Label onMouseClicked="#haveAnAccountClicked" style="-fx-text-fill: blue; -fx-underline: true;" text="Already have an account." />
-                <Button mnemonicParsing="false" onAction="#onBtnClickSignIn" prefHeight="31.0" prefWidth="91.0" text="Sign Up" />
+            <GridPane prefHeight="30.0" prefWidth="279.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                      <Button mnemonicParsing="false" onAction="#onBtnClickSignIn" prefHeight="31.0" prefWidth="91.0" text="Sign Up" />
+                  <CheckBox fx:id="isAdminCheckBox" mnemonicParsing="false" prefHeight="17.0" prefWidth="190.0" text="Admin Account" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
             </children>
             <padding>
                 <Insets bottom="10.0" left="50.0" top="40.0" />
