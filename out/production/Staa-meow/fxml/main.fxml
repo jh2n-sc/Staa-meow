@@ -23,8 +23,8 @@
                </font>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Need a [System name] account? Create an account." wrappingWidth="278.0" />
-            <TextField fx:id="username" prefHeight="27.0" prefWidth="278.0" promptText="Username" />
-            <PasswordField fx:id="password" prefHeight="25.0" prefWidth="278.0" promptText="Password" />
+            <TextField fx:id="usernameField" prefHeight="27.0" prefWidth="278.0" promptText="Username" />
+            <PasswordField fx:id="passwordField" prefHeight="25.0" prefWidth="278.0" promptText="Password" />
             <CheckBox mnemonicParsing="false" onAction="#keepMeLoggedIn" text=" Keep me logged in" />
             <Button mnemonicParsing="false" onAction="#onBtnClickLogIn" prefHeight="31.0" prefWidth="91.0" text="Log in" />
          </children>

@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -15,10 +14,10 @@ import java.io.IOException;
 public class LogInController {
 
     @FXML
-    private PasswordField password;
+    private PasswordField passwordField;
 
     @FXML
-    private TextField username;
+    private TextField usernameField;
 
     @FXML
     void keepMeLoggedIn(ActionEvent event) {
@@ -28,21 +27,29 @@ public class LogInController {
     @FXML
     public void onBtnClickLogIn(ActionEvent event) {
 
-        String name = username.getText().trim();
-        String password = this.password.getText().trim();
+        String name = usernameField.getText().trim();
+        String password = passwordField.getText().trim();
+        boolean notLogin = false;
 
 
         //log in flag for empty username field
         //maybe i could make the error msg more apparent pero this will do for now
+
         if (name.isEmpty()) {
-            username.setPromptText("Name is required!");
-            return;
+            usernameField.setStyle("-fx-border-color: red; -fx-prompt-text-fill: rgba(255,0,0,0.38);");
+            usernameField.setPromptText("Name is required!");
+            notLogin = true;
 
         }
 
         //log in flag for empty password field
         if (password.isEmpty()) {
-            this.password.setPromptText("Password is required!");
+            passwordField.setStyle("-fx-border-color: red; -fx-prompt-text-fill: rgba(255,0,0,0.38);");
+            passwordField.setPromptText("Password is required!");
+            notLogin = true;
+        }
+
+        if (notLogin) {
             return;
         }
 
@@ -58,7 +65,7 @@ public class LogInController {
         }
 
 
-
+        System.out.println("username: " + name + " password: " + password);
     }
 
     //util function to switch scenes

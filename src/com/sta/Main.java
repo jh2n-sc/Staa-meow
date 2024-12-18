@@ -1,6 +1,5 @@
 package com.sta;
 
-
 import com.sta.item.Item;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +16,8 @@ public class Main extends Application{
 
     public void start(Stage primaryStage) throws Exception{
         stage = primaryStage;
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/main.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass()
+                .getResource("/fxml/main.fxml")));
 
         Scene scene = new Scene(root, 400 , 382);
         assert stage != null : "primaryStage must not be null";
