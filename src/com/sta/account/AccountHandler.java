@@ -62,4 +62,14 @@ public class AccountHandler {
         newAccount.saveAccount(filePath);
         return true;
     }
+
+    public Account retrieveAccount(Account account) {
+        for (Account ac : accounts) {
+            if(ac.getUsername().equals(account.getUsername())
+            && ac.getPassword().equals(account.getPassword())) {
+                return ac;
+            }
+        }
+        return null;
+    }
 }

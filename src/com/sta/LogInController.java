@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import com.sta.utility.Utility;
 import com.sta.account.Account;
 public class LogInController {
+    AccountHandler accountHandler;
 
     @FXML
     private PasswordField passwordField;
@@ -19,6 +20,7 @@ public class LogInController {
 
     @FXML
     public void onBtnClickLogIn(ActionEvent event) {
+        accountHandler = new AccountHandler();
 
         String name = usernameField.getText().trim();
         String password = passwordField.getText().trim();
@@ -49,14 +51,26 @@ public class LogInController {
             return;
         }
 
+        // creates new Account object to be compared to every accounts inside
+        // the accountHandler
+        Account account = new Account(name, password);
+        Account retrievedAccount = accountHandler
+                .retrieveAccount(account);
+
         //checks if admin or regular user
         //NOTE!!!!!
         //madagdag pa other conditionals such as checking whether input credentials match pre-existing ones in the
-        //(currently non-existent) database.
+        //(currently existent) database.
 
-        if(name.equals("admin") && password.equals("adminpassword1234")) {
+        // if it is null, it means that the account doesnt exist
+        if (retrievedAccount != null) {
+            System.out.println("Username or Password doesnt match");
+        }
+
+        // it then checks whether that account is an admin or user
+        if(retrievedAccount.toString().contains("Admin")) {
             Utility.switchScene("/fxml/adminstameow.fxml", "StaMeow Admin", event);
-        } else {
+        }else {
             Utility.switchScene("/fxml/userstameow.fxml", "StaMeow User", event);
         }
 
