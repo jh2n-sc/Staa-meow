@@ -19,7 +19,7 @@ public class Main extends Application{
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass()
                 .getResource("/fxml/main.fxml")));
 
-        Scene scene = new Scene(root, 400 , 382);
+        Scene scene = new Scene(root, 400 , 436);
         assert stage != null : "primaryStage must not be null";
         stage.setTitle("StaMeow Log In");
         stage.setScene(scene);

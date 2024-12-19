@@ -9,7 +9,10 @@ import javafx.scene.control.TextField;
 
 import com.sta.utility.Utility;
 import com.sta.account.Account;
+import javafx.scene.text.Text;
+
 public class LogInController {
+
     AccountHandler accountHandler;
 
     @FXML
@@ -19,7 +22,14 @@ public class LogInController {
     private TextField usernameField;
 
     @FXML
+    private Text loginStatus;
+
+    @FXML
     public void onBtnClickLogIn(ActionEvent event) {
+        loginStatus.setVisible(false);
+        loginStatus.managedProperty().bind(loginStatus.visibleProperty());
+
+
         accountHandler = new AccountHandler();
 
         String name = usernameField.getText().trim();
@@ -63,11 +73,16 @@ public class LogInController {
         //(currently existent) database.
 
         // if it is null, it means that the account doesnt exist
-        if (retrievedAccount != null) {
-            System.out.println("Username or Password doesnt match");
+        if (retrievedAccount == null) {
+            passwordField.setStyle("-fx-border-color: red; -fx-prompt-text-fill: rgba(255,0,0,0.38);");
+            usernameField.setStyle("-fx-border-color: red; -fx-prompt-text-fill: rgba(255,0,0,0.38);");
+            loginStatus.setVisible(true);
+            loginStatus.setText("Login Error");
+            return;
         }
 
         // it then checks whether that account is an admin or user
+        assert retrievedAccount != null;
         if(retrievedAccount.toString().contains("Admin")) {
             Utility.switchScene("/fxml/adminstameow.fxml", "StaMeow Admin", event);
         }else {
