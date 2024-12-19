@@ -12,8 +12,12 @@ import javafx.scene.input.MouseEvent;
 
 import com.sta.utility.Utility;
 import com.sta.account.AccountHandler;
+import javafx.scene.text.Text;
+
 public class SignInController {
     AccountHandler accountHandler = new AccountHandler();
+    @FXML
+    private Text loginStatus;
 
     @FXML
     private PasswordField confirmPasswordField;
@@ -37,14 +41,37 @@ public class SignInController {
 
     @FXML
     void onBtnClickSignIn(ActionEvent event) {
+        loginStatus.setVisible(false);
+
         Account account;
         if (isAdminCheckBox.isSelected()) {
             account = new Admin(firstNameField.getText() + lastNameField.getText(), passwordField.getText());
         } else {
             account = new User(firstNameField.getText() + lastNameField.getText(), passwordField.getText());
         }
-        accountHandler.makeNewAccount(account);
+
+        if (!confirmPasswordField.getText().equals(passwordField.getText())) {
+            loginStatus.setVisible(true);
+            loginStatus.setText("Passwords do not match");
+            passwordField.setStyle("-fx-border-color: red; -fx-prompt-text-fill: rgba(255,0,0,0.38);");
+            return;
+        }
+
+        if(!accountHandler.makeNewAccount(account)) {
+            loginStatus.setVisible(true);
+            loginStatus.setText("Username is already taken!");
+            return;
+        }
+
+        Utility.switchScene("/fxml/signupsuccess.fxml", "Account Created Successfully", event);
+
+
         accountHandler.readAccounts();
+    }
+
+    @FXML
+    public void initialize() {
+        loginStatus.setVisible(false);
     }
 
 }

@@ -67,6 +67,8 @@ public class LogInController {
         Account retrievedAccount = accountHandler
                 .retrieveAccount(account);
 
+        AccountHandler.setCurrentAccount(retrievedAccount);
+
         //checks if admin or regular user
         //NOTE!!!!!
         //madagdag pa other conditionals such as checking whether input credentials match pre-existing ones in the

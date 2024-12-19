@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class AccountHandler {
     private ArrayList<Account> accounts;
+    private static Account currentAccount;
     String filePath;
 
     public AccountHandler() {
@@ -71,5 +72,17 @@ public class AccountHandler {
             }
         }
         return null;
+    }
+
+    public static void setCurrentAccount(Account account) {
+        AccountHandler.currentAccount = account;
+    }
+
+    public static Account getCurrentAccount() {
+        return AccountHandler.currentAccount;
+    }
+
+    public boolean isDatabaseEmpty() {
+        return accounts.isEmpty();
     }
 }
