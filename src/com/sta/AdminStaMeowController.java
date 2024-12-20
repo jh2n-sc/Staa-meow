@@ -31,6 +31,7 @@ public class AdminStaMeowController {
     @FXML private Button editItemBtn;
     @FXML private Button restockItemBtn;
     @FXML private Button deleteItemBtn;
+    @FXML private TabPane wholeTabPane;
 
     static Item selectedItem;
 
@@ -182,4 +183,5 @@ public class AdminStaMeowController {
         arrayList.clear();
         arrayList.addAll(search);
     }
+    
 }

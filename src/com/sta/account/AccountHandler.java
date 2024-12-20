@@ -8,12 +8,15 @@ public class AccountHandler {
     private static Account currentAccount;
     String filePath;
 
+
     public AccountHandler() {
         accounts = new ArrayList<>();
         filePath = new String("res/credentials/cred.dat");
         readAccounts();
     }
 
+
+    // reads account from the file
     public void readAccounts() {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             File file = new File(filePath);
@@ -23,6 +26,7 @@ public class AccountHandler {
             String line;
             String username;
             String password;
+            // parser of the reading mechanism
             while((line = br.readLine()) != null) {
                 int usernameStart = line.indexOf("username=") + "username=".length();
                 int usernameEnd = line.indexOf(",", usernameStart);
@@ -53,6 +57,7 @@ public class AccountHandler {
         }
     }
 
+    // making sure to make accounts that doesn't already exist
     public boolean makeNewAccount(Account newAccount) {
         for(Account account : accounts) {
             if(account.getUsername().equals(newAccount.getUsername())) {
@@ -64,6 +69,7 @@ public class AccountHandler {
         return true;
     }
 
+    // This is used for checking if account exist from the database or not
     public Account retrieveAccount(Account account) {
         for (Account ac : accounts) {
             if(ac.getUsername().equals(account.getUsername())

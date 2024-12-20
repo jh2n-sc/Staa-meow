@@ -77,7 +77,5 @@ public class EditDialogController {
             descriptionField.setText(AdminStaMeowController.selectedItem.getDescription());
             itemID.setText(AdminStaMeowController.selectedItem.getItemID());
         });
-
     }
-
 }

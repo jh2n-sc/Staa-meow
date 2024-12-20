@@ -6,6 +6,8 @@ public class Account {
     private String username;
     private String password;
 
+
+    // Initialization of account
     public Account() {
         username = "";
         password = "";
@@ -15,6 +17,8 @@ public class Account {
         this.password = password;
     }
 
+
+    // Accessors and Mutators
     public String getUsername() {
         return username;
     }
@@ -31,6 +35,8 @@ public class Account {
         this.password = password;
     }
 
+
+    // Used for printing, and also storing of accounts
     @Override
     public String toString() {
         return "Account [username=" + username + ", password=" + password + "]";

@@ -15,7 +15,6 @@ public class Populator {
     public String jsonFilePath;
     public Populator(String jsonFilePath) {
         this.jsonFilePath = jsonFilePath;
-        System.out.println("hello");
     }
 
     public ArrayList<Item> repopulate() {
@@ -23,7 +22,6 @@ public class Populator {
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
                 .create();
-        System.out.println("hello142412");
 
         try (BufferedReader br = new BufferedReader(new FileReader("res/database/data.json"))) {
             Type listType = new TypeToken<ArrayList<Item>>() {}.getType();
@@ -45,6 +43,9 @@ public class Populator {
         }
         return itemList;
     }
+
+
+    // This writes it back to the database
 
     public void writeItBack(ArrayList<Item> parentObjects) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
