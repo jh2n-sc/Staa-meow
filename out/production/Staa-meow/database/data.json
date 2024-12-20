@@ -4,5 +4,17 @@
     "description": "ads",
     "itemID": "gd",
     "stock": 1
+  },
+  {
+    "category": "asdf",
+    "description": "fdsaf",
+    "itemID": "assdfasdf",
+    "stock": 1000
+  },
+  {
+    "category": "asdfgqwe",
+    "description": "qwer",
+    "itemID": "qw",
+    "stock": 1
   }
 ]

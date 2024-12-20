@@ -165,15 +165,17 @@ public class AdminStaMeowController {
     }
     @FXML
     private void onSearchBtnClicked(ActionEvent event) throws IOException {
-
+        String searchText = searchField.getText().toLowerCase();
         if (searchField.getText().equals("")) {
+            arrayList.clear();
+            arrayList.addAll(items);
             return;
         }
         ArrayList<Item> search= new ArrayList<>();
         for (Item item : items) {
-            if (item.getItemID().contains(searchField.getText())
-                    || item.getDescription().contains(searchField.getText())
-            ||item.getCategory().contains(searchField.getText())) {
+            if (item.getItemID().toLowerCase().contains(searchText)
+                    || item.getDescription().toLowerCase().contains(searchText)
+            ||item.getCategory().toLowerCase().contains(searchText)) {
                 search.add(item);
             }
         }
