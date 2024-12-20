@@ -10,6 +10,5 @@ public class SignUpSuccessController {
     @FXML
     public void onOKClicked(ActionEvent actionEvent) {
         Utility.switchScene("/fxml/main.fxml", "Sta Meow Login", actionEvent);
-
     }
 }

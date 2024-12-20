@@ -2,17 +2,23 @@ package com.sta;
 
 import com.sta.account.AccountHandler;
 import com.sta.item.Item;
+import com.sta.item.Populator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 
-
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class AdminStaMeowController {
@@ -23,9 +29,16 @@ public class AdminStaMeowController {
     @FXML private TableColumn<Item,String> itemID;
     @FXML private TableColumn<Item,Integer> stock;
 
+    static Populator populator = new Populator("/database/data.json");
+    static ArrayList<Item> items = populator.repopulate();
+    static ObservableList<Item> arrayList;
+
     @FXML
     private Text username;
     private String user = AccountHandler.getCurrentAccount().getUsername();
+
+    @FXML
+    private Parent root;
 
     @FXML
     public void initialize() {
@@ -47,16 +60,30 @@ public class AdminStaMeowController {
         table.setItems(getItems());
     }
 
+    @FXML
+    void onAddNewItemClicked(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/adddialog.fxml"));
+
+        Parent root = fxmlLoader.load();
+        Stage newStage = new Stage();
+        Scene newScene = new Scene(root);
+        newStage.setScene(newScene);
+        newStage.setTitle("Add New Item");
+        newStage.show();
+    }
+
     private ObservableList<Item> getItems() {
-        ObservableList<Item> arrayList = FXCollections.observableArrayList();
+        arrayList = FXCollections.observableArrayList();
+        Item item = new Item("pencil", "yellow", "BIC", 10);
+        items.add(item);
+        arrayList.addAll(items);
 
-        Item item1 = new Item("Women", "afsasdf", "asdfasdf", 111);
-        Item item2 = new Item("BlackPeople", "afsasdf", "asdfasdf", 111);
-        Item item3 = new Item("AsianPeople", "afsasdf", "asdfasdf", 111);
-        arrayList.add(item1);
-        arrayList.add(item2);
-        arrayList.add(item3);
-
+        populator.writeItBack(items);
         return arrayList;
     }
+
+    public static void addItem(Item item) {
+        arrayList.add(item);
+    }
+
 }

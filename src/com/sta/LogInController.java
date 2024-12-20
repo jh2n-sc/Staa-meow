@@ -29,7 +29,6 @@ public class LogInController {
         loginStatus.setVisible(false);
         loginStatus.managedProperty().bind(loginStatus.visibleProperty());
 
-
         accountHandler = new AccountHandler();
 
         String name = usernameField.getText().trim();
@@ -74,7 +73,7 @@ public class LogInController {
         //madagdag pa other conditionals such as checking whether input credentials match pre-existing ones in the
         //(currently existent) database.
 
-        // if it is null, it means that the account doesnt exist
+        // if it is null, it means that the account doesn't exist
         if (retrievedAccount == null) {
             passwordField.setStyle("-fx-border-color: red; -fx-prompt-text-fill: rgba(255,0,0,0.38);");
             usernameField.setStyle("-fx-border-color: red; -fx-prompt-text-fill: rgba(255,0,0,0.38);");
@@ -84,7 +83,6 @@ public class LogInController {
         }
 
         // it then checks whether that account is an admin or user
-        assert retrievedAccount != null;
         if(retrievedAccount.toString().contains("Admin")) {
             Utility.switchScene("/fxml/adminstameow.fxml", "StaMeow Admin", event);
         }else {

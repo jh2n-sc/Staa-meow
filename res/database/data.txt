@@ -1,5 +1,0 @@
-"ITEM_ID" : {
-    category="valuable",
-    stock=0,
-    description="big-black"
-},

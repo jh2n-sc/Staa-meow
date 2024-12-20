@@ -1,10 +1,11 @@
 package com.sta.item;
-
+import com.google.gson.annotations.Expose;
 public class Item {
-    private String category;
-    private String description;
-    private String itemID;
-    private int stock;
+
+    @Expose private String category;
+    @Expose private String description;
+    @Expose private String itemID;
+    @Expose private int stock;
 
     public Item(String category, String description, String itemID, int stock) {
         this.category = category;
@@ -31,9 +32,6 @@ public class Item {
 
     @Override
     public String toString() {
-
-        String tmp = "Category: " + category + ", Description: " + description + ", ItemID: " + itemID + ", " +
-                "Stock: " + stock;
-        return tmp;
+        return "itemID: " + itemID + ", category: " + category + ", description: " + description + ", stock: " + stock;
     }
 }
