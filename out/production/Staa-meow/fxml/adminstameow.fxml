@@ -56,12 +56,12 @@
    <top>
       <HBox alignment="CENTER" prefHeight="44.0" prefWidth="780.0" spacing="4.0">
          <children>
-            <TextField>
+            <TextField fx:id="searchField">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </TextField>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Search" />
+            <Button mnemonicParsing="false" onAction="#onSearchBtnClicked" prefHeight="30.0" prefWidth="70.0" text="Search" />
             <Text fx:id="username" strokeType="OUTSIDE" strokeWidth="0.0" text="username" textAlignment="RIGHT" wrappingWidth="492.5369183421135">
                <HBox.margin>
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
@@ -73,9 +73,10 @@
    <bottom>
       <ButtonBar prefHeight="55.0" prefWidth="780.0" BorderPane.alignment="CENTER">
          <buttons>
-            <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="126.0" text="Restock Item" />
+            <Button fx:id="deleteItemBtn" disable="true" mnemonicParsing="false" onAction="#onDeleteItemBtnClicked" prefHeight="42.0" prefWidth="126.0" text="Delete Item" />
+            <Button fx:id="restockItemBtn" disable="true" mnemonicParsing="false" onAction="#onRestockItemBtnClicked" prefHeight="42.0" prefWidth="126.0" text="Restock Item" />
             <Button mnemonicParsing="false" onAction="#onAddNewItemClicked" prefHeight="42.0" prefWidth="126.0" text="Add New Item" />
-            <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="126.0" text="Edit Items" />
+            <Button fx:id="editItemBtn" disable="true" mnemonicParsing="false" onAction="#onEditItemBtnClicked" prefHeight="42.0" prefWidth="126.0" text="Edit Item" />
          </buttons>
          <padding>
             <Insets bottom="10.0" right="10.0" top="10.0" />

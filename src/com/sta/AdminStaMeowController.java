@@ -9,9 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 
@@ -20,6 +18,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import javafx.beans.value.ObservableValue;
+import javafx.beans.value.ChangeListener;
 
 public class AdminStaMeowController {
 
@@ -28,10 +28,17 @@ public class AdminStaMeowController {
     @FXML private TableColumn<Item,String> description;
     @FXML private TableColumn<Item,String> itemID;
     @FXML private TableColumn<Item,Integer> stock;
+    @FXML private Button editItemBtn;
+    @FXML private Button restockItemBtn;
+    @FXML private Button deleteItemBtn;
+
+    static Item selectedItem;
 
     static Populator populator = new Populator("/database/data.json");
     static ArrayList<Item> items = populator.repopulate();
     static ObservableList<Item> arrayList;
+
+    @FXML private TextField searchField;
 
     @FXML
     private Text username;
@@ -58,7 +65,33 @@ public class AdminStaMeowController {
 
         //table = new TableView<>();
         table.setItems(getItems());
+
+        table.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Item>() {
+            @Override
+            public void changed(ObservableValue<? extends Item> observable, Item oldValue, Item newValue) {
+                if (newValue != null) {
+                    editItemBtn.setDisable(false);
+                    restockItemBtn.setDisable(false);
+                    deleteItemBtn.setDisable(false);
+
+                    // A row is selected, show alert with the selected person's details
+                    AdminStaMeowController.selectedItem = newValue;
+
+                } else {
+                    editItemBtn.setDisable(true);
+                    restockItemBtn.setDisable(true);
+                    deleteItemBtn.setDisable(true);
+                    // No row is selected (null selection)
+                    System.out.println("No selection made.");
+                }
+            }
+        });
     }
+
+    private void showSelectionAlert(Item item) {
+    }
+
+    private
 
     @FXML
     void onAddNewItemClicked(ActionEvent event) throws IOException {
@@ -74,8 +107,6 @@ public class AdminStaMeowController {
 
     private ObservableList<Item> getItems() {
         arrayList = FXCollections.observableArrayList();
-        Item item = new Item("pencil", "yellow", "BIC", 10);
-        items.add(item);
         arrayList.addAll(items);
 
         populator.writeItBack(items);
@@ -83,7 +114,70 @@ public class AdminStaMeowController {
     }
 
     public static void addItem(Item item) {
+        items.add(item);
         arrayList.add(item);
+        populator.writeItBack(items);
     }
 
+    public static boolean checkItemExist(Item item) {
+        for (Item i : arrayList) {
+            if(i.getItemID().equals(item.getItemID())) {
+                return true;
+            };
+        }
+        return false;
+    }
+
+    public static void reload() {
+        arrayList.clear();
+        arrayList.addAll(items);
+        populator.writeItBack(items);
+    }
+
+    @FXML
+    void onRestockItemBtnClicked(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/restockdialog.fxml"));
+
+        Parent root = fxmlLoader.load();
+        Stage newStage = new Stage();
+        Scene newScene = new Scene(root);
+        newStage.setScene(newScene);
+        newStage.setTitle("Edit Selected Item");
+        newStage.show();
+    }
+
+    @FXML
+    void onEditItemBtnClicked(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/editdialog.fxml"));
+
+        Parent root = fxmlLoader.load();
+        Stage newStage = new Stage();
+        Scene newScene = new Scene(root);
+        newStage.setScene(newScene);
+        newStage.setTitle("Edit Selected Item");
+        newStage.show();
+    }
+
+    @FXML
+    void onDeleteItemBtnClicked(ActionEvent event) throws IOException {
+        items.remove(selectedItem);
+        reload();
+    }
+    @FXML
+    private void onSearchBtnClicked(ActionEvent event) throws IOException {
+
+        if (searchField.getText().equals("")) {
+            return;
+        }
+        ArrayList<Item> search= new ArrayList<>();
+        for (Item item : items) {
+            if (item.getItemID().contains(searchField.getText())
+                    || item.getDescription().contains(searchField.getText())
+            ||item.getCategory().contains(searchField.getText())) {
+                search.add(item);
+            }
+        }
+        arrayList.clear();
+        arrayList.addAll(search);
+    }
 }

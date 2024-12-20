@@ -9,6 +9,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Populator {
     public String jsonFilePath;
@@ -18,32 +19,44 @@ public class Populator {
     }
 
     public ArrayList<Item> repopulate() {
-        ArrayList<Item> parentObjects = new ArrayList<>();
+        ArrayList<Item> itemList = new ArrayList<>();
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
                 .create();
+        System.out.println("hello142412");
 
-        try (InputStream is = getClass().getResourceAsStream(jsonFilePath)) {
-            assert is != null;
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        try (BufferedReader br = new BufferedReader(new FileReader("res/database/data.json"))) {
             Type listType = new TypeToken<ArrayList<Item>>() {}.getType();
 
-             parentObjects = gson.fromJson(br, listType);
-            for (Item parentObject : parentObjects) {
-                System.out.println(parentObject.toString());
+            StringBuilder stringBuilder = new StringBuilder();
+            String line;
+            while ((line = br.readLine()) != null) {
+                stringBuilder.append(line);
             }
+
+            String jsonString = stringBuilder.toString();
+            itemList = gson.fromJson(jsonString, listType);
+            for (Item item : itemList) {
+                System.out.println(item);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return parentObjects;
+        return itemList;
     }
 
     public void writeItBack(ArrayList<Item> parentObjects) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        try (FileWriter writer = new FileWriter("output.json")) {
-            // Write the ArrayList to a JSON file
-            gson.toJson(parentObjects, writer);
-            System.out.println("ArrayList has been written to output.json");
+        try (InputStream is = getClass().getResourceAsStream(jsonFilePath)) {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("res/database/data.json", false));
+            BufferedWriter br = new BufferedWriter(new BufferedWriter(writer));
+            String json = gson.toJson(parentObjects);
+            writer.write(json);
+            System.out.println(json);
+            br.flush();
+            br.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

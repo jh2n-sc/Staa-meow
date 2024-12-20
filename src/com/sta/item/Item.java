@@ -30,6 +30,22 @@ public class Item {
         return stock;
     }
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setItemID(String itemID) {
+        this.itemID = itemID;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
     @Override
     public String toString() {
         return "itemID: " + itemID + ", category: " + category + ", description: " + description + ", stock: " + stock;

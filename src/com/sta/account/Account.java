@@ -37,8 +37,6 @@ public class Account {
     }
 
     public void saveAccount(String filePath) {
-
-
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
             BufferedWriter br = new BufferedWriter(new BufferedWriter(writer));
             writer.write(toString());

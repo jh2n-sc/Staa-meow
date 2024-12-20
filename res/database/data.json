@@ -1,20 +1,20 @@
 [
-    {
-        "category": "Pencil",
-        "description": "black normal 2b",
-        "itemID" : "Mongol Pencil",
-        "stock" : 17
-    },
-    {
-        "category": "Paper",
-        "description": "intermediate pad",
-        "itemID" : "Velco Intermediate Pad",
-        "stock" : 124
-    },
-    {
-        "category": "Eraser",
-        "description": "PVC eraser",
-        "itemID" : "Mongol Pencil",
-        "stock" : 176
-    }
+  {
+    "category": "gdfa",
+    "description": "ads",
+    "itemID": "gd",
+    "stock": 1
+  },
+  {
+    "category": "asdf",
+    "description": "fdsaf",
+    "itemID": "assdfasdf",
+    "stock": 1000
+  },
+  {
+    "category": "asdfgqwe",
+    "description": "qwer",
+    "itemID": "qw",
+    "stock": 1
+  }
 ]
